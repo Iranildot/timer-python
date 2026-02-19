@@ -1,26 +1,19 @@
-# ⚡ Tech Timer --- CustomTkinter UI
+# ⏱ Timer Utility --- High-Resolution Python Timer
 
-A modern and tech-styled desktop timer application built with
-**CustomTkinter** and Python.\
-It provides a high-resolution timer with multiple time units and a
-futuristic dashboard-like interface.
+A lightweight, high-resolution **Timer** utility for Python based on
+`time.perf_counter_ns`.\
+This project focuses on the **Timer class as the main component**, with
+a modern CustomTkinter UI provided only as an **example of usage**.
 
 ------------------------------------------------------------------------
 
 ## ✨ Features
 
--   🕒 High-precision timer based on `perf_counter_ns`
--   🎛 Multiple time units: ns, us, ms, s, min, h
--   🖥 Modern & futuristic UI (dashboard style)
--   ▶ Start / ⏸ Pause / ⟳ Reset controls
--   🌙 Dark mode interface
--   ⚡ Smooth \~60 FPS updates
-
-------------------------------------------------------------------------
-
-## 📸 Preview
-
-*Add a screenshot or GIF of the app here*
+-   🕒 High-precision timer using `perf_counter_ns`
+-   🎯 Multiple time units: ns, us, ms, s, min, h, d
+-   🔁 Reset and delta tracking
+-   🧩 Clean and reusable utility class
+-   🖥 Optional modern UI example (CustomTkinter)
 
 ------------------------------------------------------------------------
 
@@ -28,80 +21,87 @@ futuristic dashboard-like interface.
 
 ``` text
 .
-├── exemple1.py        # Main UI application (CustomTkinter)
-├── timer.py      # Timer utility class
+├── timer.py      # Core Timer utility (main project focus)
+├── exemple1.py   # Example UI showing how to use Timer (optional)
 └── README.md     # Project documentation
 ```
+
+> The UI application is **only an example**.\
+> The main goal of this repository is to provide a reusable and precise
+> **Timer utility**.
 
 ------------------------------------------------------------------------
 
 ## 🚀 Installation
 
-Make sure you have **Python 3.10+** installed.
+Python 3.10+ recommended.
 
 ``` bash
 pip install customtkinter
 ```
 
-Clone the repository:
-
-``` bash
-git clone https://github.com/your-username/tech-timer.git
-cd tech-timer
-```
-
-Run the application:
-
-``` bash
-python app.py
-```
+(CustomTkinter is only required if you want to run the example UI.)
 
 ------------------------------------------------------------------------
 
-## 🛠 Usage
-
-1.  Click **START** to begin counting time\
-2.  Click **PAUSE** to stop temporarily\
-3.  Click **RESET** to clear the timer\
-4.  Select the desired time unit from the dropdown menu
-
-------------------------------------------------------------------------
-
-## 📦 Packaging as an Executable (Optional)
-
-``` bash
-pip install pyinstaller
-pyinstaller --onefile --windowed app.py
-```
-
-------------------------------------------------------------------------
-
-## 🧠 Timer API
+## 🧠 Using the Timer (Core API)
 
 ``` python
-from timer import Timer
 import time
+from timer import Timer
 
 timer = Timer()
-time.sleep(1.5)
+
+# Simulate workload
+time.sleep(1.2)
+
+# Update internal state
 timer._tick()
-print(timer.elapsed("s"))
+
+print(f"Elapsed (ms): {timer.elapsed('ms')}")
+print(f"Elapsed (s): {timer.elapsed('s')}")
+```
+
+### Resetting the timer
+
+``` python
+timer.reset()
+```
+
+### Measuring expiration
+
+``` python
+limit_seconds = 2
+
+while not timer.has_expired(limit_seconds, 's'):
+    pass
+
+print("Time limit reached!")
 ```
 
 ------------------------------------------------------------------------
 
-## 🛣 Roadmap
+## 🖥 Example UI (Optional)
 
--   ⏳ Countdown mode\
--   📊 Performance benchmark mode\
--   🎨 Theme switcher\
--   📈 Real-time charts\
--   📁 Export results to CSV
+This project includes a modern, tech-styled UI built with CustomTkinter
+to demonstrate how the `Timer` can be used in a real application.
+
+Run the UI example:
+
+``` bash
+python example1.py
+```
+
+The UI is meant for **demonstration purposes only** and is not required
+to use the Timer utility.
+
+https://github.com/user-attachments/assets/d973b874-3341-4949-a354-88979744cf6f
 
 ------------------------------------------------------------------------
 
 ## 🤝 Contributing
 
-Pull requests are welcome!
+Contributions are welcome!\
+Feel free to open issues or submit pull requests.
 
 ------------------------------------------------------------------------
