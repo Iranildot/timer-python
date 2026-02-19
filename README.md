@@ -28,7 +28,7 @@ futuristic dashboard-like interface.
 
 ``` text
 .
-├── app.py        # Main UI application (CustomTkinter)
+├── exemple1.py        # Main UI application (CustomTkinter)
 ├── timer.py      # Timer utility class
 └── README.md     # Project documentation
 ```
